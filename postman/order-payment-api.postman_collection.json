@@ -1,0 +1,199 @@
+{
+    "info": {
+        "_postman_id": "917575c0-7ddf-48e6-8a63-7aba51db1564",
+        "name": "Order & Payment API",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+        "_exporter_id": "8005738"
+    },
+    "item": [
+        {
+            "name": "Auth",
+            "item": [
+                {
+                    "name": "Register",
+                    "request": {
+                        "method": "POST",
+                        "header": [],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\r\n  \"name\": \"Test User\",\r\n  \"email\": \"test@example.com\",\r\n  \"password\": \"123456\"\r\n}\r\n",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{base_url}}/register",
+                            "host": ["{{base_url}}"],
+                            "path": ["register"]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Login",
+                    "request": {
+                        "method": "POST",
+                        "header": [],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\r\n  \"email\": \"test@example.com\",\r\n  \"password\": \"123456\"\r\n}",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{base_url}}/login",
+                            "host": ["{{base_url}}"],
+                            "path": ["login"]
+                        }
+                    },
+                    "response": []
+                }
+            ]
+        },
+        {
+            "name": "Orders",
+            "item": [
+                {
+                    "name": "Create",
+                    "request": {
+                        "method": "POST",
+                        "header": [],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\r\n  \"items\": [\r\n    { \"product_name\": \"Laptop\", \"quantity\": 1, \"price\": 1000 }\r\n  ]\r\n}\r\n",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{base_url}}/orders",
+                            "host": ["{{base_url}}"],
+                            "path": ["orders"]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "List",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/orders?page=1",
+                            "host": ["{{base_url}}"],
+                            "path": ["orders"],
+                            "query": [
+                                {
+                                    "key": "page",
+                                    "value": "1"
+                                }
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Show",
+                    "request": {
+                        "method": "GET",
+                        "header": []
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Cancel",
+                    "request": {
+                        "method": "POST",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/orders/1/cancel",
+                            "host": ["{{base_url}}"],
+                            "path": ["orders", "1", "cancel"]
+                        }
+                    },
+                    "response": []
+                }
+            ]
+        },
+        {
+            "name": "Payments",
+            "item": [
+                {
+                    "name": "Create",
+                    "request": {
+                        "method": "POST",
+                        "header": [],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\r\n  \"order_id\": 1,\r\n  \"payment_method\": \"credit_card\"\r\n}\r\n",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{base_url}}/payments",
+                            "host": ["{{base_url}}"],
+                            "path": ["payments"]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "List",
+                    "request": {
+                        "method": "GET",
+                        "header": []
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Show",
+                    "request": {
+                        "method": "GET",
+                        "header": []
+                    },
+                    "response": []
+                }
+            ]
+        }
+    ],
+    "auth": {
+        "type": "bearer",
+        "bearer": [
+            {
+                "key": "token",
+                "value": "{{token}}",
+                "type": "string"
+            }
+        ]
+    },
+    "event": [
+        {
+            "listen": "prerequest",
+            "script": {
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {},
+                "exec": [""]
+            }
+        },
+        {
+            "listen": "test",
+            "script": {
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {},
+                "exec": [""]
+            }
+        }
+    ]
+}
